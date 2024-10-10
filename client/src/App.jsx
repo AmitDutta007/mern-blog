@@ -5,6 +5,7 @@ import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
 import Dashboard from './pages/Dashboard'
 import About from './pages/About'
+import Footer from './components/Footer'
 
 
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/about" element={<About />} />
           {/* <Route path="" element={ } /> */}
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </>
   )
