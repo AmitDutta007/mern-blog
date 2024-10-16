@@ -1,5 +1,5 @@
 import { Alert, Button, Label, Spinner, TextInput } from 'flowbite-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { signInStart, signInFailure, signInSuccess } from '../redux/user/userSlice';
 import { useDispatch, useSelector } from 'react-redux'
@@ -54,6 +54,10 @@ const SignIn = () => {
 
   }
 
+  // useEffect(() => {
+  //   errorMessage(" ")
+  // })
+
 
   return (
     <div className='min-h-screen mt-20'>
@@ -99,7 +103,7 @@ const SignIn = () => {
               Sign Up
             </Link>
           </div>
-         
+
 
           {errorMessage && (
             <Alert className='mt-5' color='failure'>
