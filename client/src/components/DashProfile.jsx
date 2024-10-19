@@ -1,4 +1,4 @@
-import { Alert, Button, Modal, TextInput } from 'flowbite-react';
+import { Alert, Button, Modal, Spinner, TextInput } from 'flowbite-react';
 import { useSelector } from 'react-redux';
 
 import {
@@ -17,16 +17,17 @@ import {
     updateSuccess,
     updateFailure,
     deleteUserStart,
-  deleteUserSuccess,
-  deleteUserFailure,
-  signoutSuccess,
+    deleteUserSuccess,
+    deleteUserFailure,
+    signoutSuccess,
 } from '../redux/user/userSlice';
 import { useDispatch } from 'react-redux';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
+import { Link } from 'react-router-dom';
 
 
 export default function DashProfile() {
-    const { currentUser,error } = useSelector((state) => state.user);
+    const { currentUser, error, loading } = useSelector((state) => state.user);
     const [showAlert, setShowAlert] = useState(false);
 
 
@@ -245,9 +246,26 @@ export default function DashProfile() {
                     onChange={handleChange}
                 />
                 <TextInput type='password' id='password' placeholder='password' onChange={handleChange} />
-                <Button type='submit' gradientDuoTone='purpleToBlue' outline>
-                    Update
+
+                <Button gradientDuoTone='purpleToPink' type='submit' disabled={loading}>
+                    {loading ? (
+                        <>
+                            <Spinner size='sm' />
+                            <span className='pl-3'>Loading...</span>
+                        </>
+                    ) : (
+                        'Update'
+                    )}
                 </Button>
+                <Link to={'/create-post'}>
+                    <Button
+                        type='button'
+                        gradientDuoTone='purpleToPink'
+                        className='w-full'
+                    >
+                        Create a post
+                    </Button>
+                </Link>
             </form>
             <div className="text-red-500 flex justify-between mt-5">
                 <span onClick={() => setShowModal(true)} className='cursor-pointer'>
@@ -265,11 +283,11 @@ export default function DashProfile() {
                     {updateUserError}
                 </Alert>
             )}
-            {error && (
+            {/* {error && (
                 <Alert color='failure' className='mt-5'>
                     {error}
                 </Alert>
-            )}
+            )} */}
             <Modal
                 show={showModal}
                 onClose={() => setShowModal(false)}

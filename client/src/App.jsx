@@ -12,6 +12,7 @@ import Footer from './components/Footer'
 import './App.css'
 import Header from './components/Header'
 import PrivateRoute from './components/PrivateRoute'
+import CreatePost from './pages/CreatePost'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -27,6 +28,9 @@ function App() {
           <Route element={<PrivateRoute />}>
             <Route path='/dashboard' element={<Dashboard />} />
           </Route>
+          {/* <Route element={<OnlyAdminPrivateRoute />}> */}
+            <Route path='/create-post' element={<CreatePost />} />
+          {/* </Route> */}
           <Route path="/about" element={<About />} />
           {/* <Route path="" element={ } /> */}
         </Routes>
