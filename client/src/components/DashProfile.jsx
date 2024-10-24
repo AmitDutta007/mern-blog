@@ -247,15 +247,16 @@ export default function DashProfile() {
                 />
                 <TextInput type='password' id='password' placeholder='password' onChange={handleChange} />
 
-                <Button gradientDuoTone='purpleToPink' type='submit' disabled={loading}>
-                    {loading ? (
+                <Button gradientDuoTone='purpleToPink' type='submit' >
+                    {/* {loading ? (
                         <>
                             <Spinner size='sm' />
                             <span className='pl-3'>Loading...</span>
                         </>
                     ) : (
                         'Update'
-                    )}
+                     )}  */}
+                     Update
                 </Button>
                 <Link to={'/create-post'}>
                     <Button

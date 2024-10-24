@@ -81,3 +81,47 @@ const FooterSec = () => {
 }
 
 export default FooterSec
+
+
+{/* <div class="upsell-cross-sell-container">
+  <h3>Related Products</h3>
+  {% for item in cart.items %}
+    {% assign up_sell_products = item.product.metafields.custom.up_sell_products.value %}
+    {% for product in up_sell_products %}
+      {% render 'card-product',
+        card_product: product,
+        media_aspect_ratio: section.settings.image_ratio,
+        show_secondary_image: section.settings.show_secondary_image,
+        show_vendor: section.settings.show_vendor
+      %}
+      <form method="post" action="/cart/add">
+        <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+        <button type="submit" class="btn btn--primary">Add to Cart</button>
+      </form>
+    {% endfor %}
+  {% endfor %}
+</div>
+
+<style>
+    .upsell-cross-sell-container .card.card--standard.card--media {
+      display: flex;
+      flex-direction: row;
+  }
+</style>
+
+{%- liquid
+          for tag in article.tags
+            if tag contains 'product_'
+              assign prod_handle = tag | split: '_'
+              assign blog_prod = all_products[prod_handle[1]]
+            endif
+          endfor
+        %}
+        {% if blog_prod %}
+          <hr>
+          <img src="{{ blog_prod.featured_image | img_url: '100x'}}"><br>
+          <p>
+            <a href="{{blog_prod.url}}">{{ blog_prod.title }}</a>
+          </p>
+          <p>{{ blog_prod.price | money }}</p>
+        {% endif %} */}
