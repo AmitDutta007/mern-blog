@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import SignUp from './pages/SignUp'
@@ -13,9 +12,11 @@ import './App.css'
 import Header from './components/Header'
 import PrivateRoute from './components/PrivateRoute'
 import CreatePost from './pages/CreatePost'
+import UpdatePost from './pages/UpdatePost'
+import Post from './pages/Post'
+
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
@@ -30,8 +31,11 @@ function App() {
           </Route>
           {/* <Route element={<OnlyAdminPrivateRoute />}> */}
             <Route path='/create-post' element={<CreatePost />} />
+            <Route path='/update-post/:postId' element={<UpdatePost />} />
+
           {/* </Route> */}
           <Route path="/about" element={<About />} />
+          <Route path="/posts" element={<Post />} />
           {/* <Route path="" element={ } /> */}
         </Routes>
         <Footer />

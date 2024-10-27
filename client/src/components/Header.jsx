@@ -78,7 +78,7 @@ const Header = () => {
                         <Dropdown.Item onClick={handleSignout}>Sign out</Dropdown.Item>
                     </Dropdown>
                 ) : (
-                    <Link to='/sign-in'>
+                    <Link to='/signin'>
                         <Button gradientDuoTone='purpleToBlue' outline>
                             Sign In
                         </Button>
@@ -93,9 +93,9 @@ const Header = () => {
                 <Navbar.Link active={path === "/about"} as={'div'}>
                     <Link to='/about'>About</Link>
                 </Navbar.Link>
-                {/* <Navbar.Link active={path === "/projects"} as={'div'}>
-                    <Link to='/projects'>Projects</Link>
-                </Navbar.Link> */}
+                <Navbar.Link active={path === "/posts"} as={'div'}>
+                    <Link to='/posts'>Posts</Link>
+                </Navbar.Link>
             </Navbar.Collapse>
         </Navbar>
     )

@@ -3,6 +3,7 @@ import DashSidebar from "../components/DashSidebar"
 import { useEffect, useState } from "react";
 import DashProfile from "../components/DashProfile";
 import DashPosts from "../components/DashPost";
+import DashUsers from "../components/DashUser";
 
 const Dashboard = () => {
 
@@ -26,6 +27,7 @@ const Dashboard = () => {
       {/* profile... */}
       {tab === 'profile' && <DashProfile />}
       {tab === 'posts' && <DashPosts />}
+      {tab === 'users' && <DashUsers />}
     </div>
   )
 }
