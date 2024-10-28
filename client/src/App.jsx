@@ -14,6 +14,7 @@ import PrivateRoute from './components/PrivateRoute'
 import CreatePost from './pages/CreatePost'
 import UpdatePost from './pages/UpdatePost'
 import Post from './pages/Post'
+import ScrollToTop from './components/ScrollToTop'
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
+      <ScrollToTop />
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -35,7 +37,8 @@ function App() {
 
           {/* </Route> */}
           <Route path="/about" element={<About />} />
-          <Route path="/posts" element={<Post />} />
+          <Route path='/post/:postSlug' element={<Post />} />
+
           {/* <Route path="" element={ } /> */}
         </Routes>
         <Footer />
