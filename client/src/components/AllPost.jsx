@@ -5,25 +5,25 @@ import { Link } from 'react-router-dom';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 
 
-export default function DashPosts() {
-    const { currentUser } = useSelector((state) => state.user);
+export default function Allposts() {
+    const { currentUser, error, loading } = useSelector((state) => state.user);
     const [userPosts, setUserPosts] = useState([]);
     const [showMore, setShowMore] = useState(true);
 
     const [showModal, setShowModal] = useState(false);
     const [postIdToDelete, setPostIdToDelete] = useState('');
 
-    // console.log(userPosts);
+    console.log(userPosts);
 
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const res = await fetch(`/api/post/getPosts?userId=${currentUser._id}`);
+                const res = await fetch('/api/post/getPosts');
                 const data = await res.json();
                 if (res.ok) {
                     setUserPosts(data.posts);
-                    // console.log(userPosts);
-                    if (data.posts.length < 9) {
+                    console.log(userPosts);
+                    if (data.posts.length < 7) {
                         setShowMore(false);
                     }
 
@@ -41,12 +41,12 @@ export default function DashPosts() {
         const startIndex = userPosts.length;
         try {
             const res = await fetch(
-                `/api/post/getposts?userId=${currentUser._id}&startIndex=${startIndex}`
+                `/api/post/getposts?&startIndex=${startIndex}`
             );
             const data = await res.json();
             if (res.ok) {
                 setUserPosts((prev) => [...prev, ...data.posts]);
-                if (data.posts.length < 9) {
+                if (data.posts.length < 7) {
                     setShowMore(false);
                 }
             }
@@ -89,6 +89,7 @@ export default function DashPosts() {
                             <Table.HeadCell>Post image</Table.HeadCell>
                             <Table.HeadCell>Post title</Table.HeadCell>
                             <Table.HeadCell>Category</Table.HeadCell>
+                            {/* <Table.HeadCell>user name</Table.HeadCell> */}
                             <Table.HeadCell>Delete</Table.HeadCell>
                             <Table.HeadCell>
                                 <span>Edit</span>
@@ -118,6 +119,7 @@ export default function DashPosts() {
                                         </Link>
                                     </Table.Cell>
                                     <Table.Cell>{post.category}</Table.Cell>
+                                    {/* <Table.Cell>{post.category}</Table.Cell> */}
                                     <Table.Cell>
                                         <span
                                             onClick={() => {

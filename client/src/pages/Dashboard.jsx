@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import DashProfile from "../components/DashProfile";
 import DashPosts from "../components/DashPost";
 import DashUsers from "../components/DashUser";
+import DashboardComp from "../components/DashboardComp";
+import DashComments from "../components/Dashcomments";
+import Allposts from "../components/AllPost";
 
 const Dashboard = () => {
 
@@ -28,6 +31,9 @@ const Dashboard = () => {
       {tab === 'profile' && <DashProfile />}
       {tab === 'posts' && <DashPosts />}
       {tab === 'users' && <DashUsers />}
+      {tab === 'comments' && <DashComments />}
+      {tab === 'dash' && <DashboardComp />}
+      {tab === 'allposts' && <Allposts />}
     </div>
   )
 }
